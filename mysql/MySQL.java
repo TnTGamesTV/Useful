@@ -1,15 +1,10 @@
-package de.mountainsmc.server.plugin.lobby.database;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.PreparedStatement;
 import java.sql.Statement;
 
-import org.bukkit.event.Listener;
-
-public class MySQL implements Listener{
+public class MySQL{
 	
 	private Connection con = null;
 	private String dbHost;
