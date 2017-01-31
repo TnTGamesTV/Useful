@@ -15,16 +15,9 @@ public class MySQL{
 
 	public String STANDART_HOST = "localhost"; //Your ip or address
 	public String STANDART_PORT = "3306"; //Your port (default: 3306)
-	public String STANDART_NAME_STATS = "stats"; //Your database name
-	public String STANDART_NAME_WEBSITE = "website"; //Your second database name, if you have one
+	public String STANDART_NAME= "database"; //Your database name
 	public String STANDART_USER = "root"; //Your username
 	public String STANDART_PASS = ""; //Your password
-	
-	public enum Standart{
-		STANDART_STATS,
-		STANDART_WEBSITE,
-    //You can define your standards here
-	}
 	
   /**
    * Creates a new custom mysql instance for handling database actions
@@ -51,49 +44,6 @@ public class MySQL{
 			System.out.println("SQLException: " + e.getMessage());
 			System.out.println("SQLState: " + e.getSQLState());
 			System.out.println("VendorError: " + e.getErrorCode());
-		}
-	}
-	
-  /**
-   * Creates a new instance of mysql using {@link Standart Standart} information
-   */
-	public MySQL(Standart s){
-		if(s == Standart.STANDART_STATS){
-			this.dbHost = STANDART_HOST;
-			this.dbPort = STANDART_PORT;
-			this.dbName = STANDART_NAME_STATS;
-			this.dbUser = STANDART_USER;
-			this.dbPass = STANDART_PASS;
-			
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+dbHost+":"+ dbPort+"/"+dbName+"?"+"user="+dbUser+"&"+"password="+dbPass);
-			} catch (ClassNotFoundException e) {
-				System.out.println("Treiber nicht gefunden");
-			} catch (SQLException e) {
-				System.out.println("Verbindung nicht moglich");
-				System.out.println("SQLException: " + e.getMessage());
-				System.out.println("SQLState: " + e.getSQLState());
-				System.out.println("VendorError: " + e.getErrorCode());
-			}
-		}else if(s == Standart.STANDART_WEBSITE){
-			this.dbHost = STANDART_HOST;
-			this.dbPort = STANDART_PORT;
-			this.dbName = STANDART_NAME_WEBSITE;
-			this.dbUser = STANDART_USER;
-			this.dbPass = STANDART_PASS;
-			
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+dbHost+":"+ dbPort+"/"+dbName+"?"+"user="+dbUser+"&"+"password="+dbPass);
-			} catch (ClassNotFoundException e) {
-				System.out.println("Treiber nicht gefunden");
-			} catch (SQLException e) {
-				System.out.println("Verbindung nicht moglich");
-				System.out.println("SQLException: " + e.getMessage());
-				System.out.println("SQLState: " + e.getSQLState());
-				System.out.println("VendorError: " + e.getErrorCode());
-			}
 		}
 	}
 	
